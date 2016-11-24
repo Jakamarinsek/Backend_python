@@ -4,7 +4,7 @@ while True:
     price = raw_input("Enter the price for the food: ")
     menu[food] = price
     new_food = raw_input("Do you want to enter new food (y/n): ").lower()
-    if new_food == "n":
+    if new_food == "n" or new_food == "no":
         break
 menu_file =  open("jedilnik.txt", "w+")
 print "Jedilni list: "
