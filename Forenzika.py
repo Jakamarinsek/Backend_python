@@ -1,3 +1,5 @@
+# -*-encoding:utf-8 -*-
+
 dnaseq = "ACAAGATGCCATTGTCCCCCGGCCTCCTGCTGCTGCTGCTCTCCGGGGCCACGGCCACCGCTGCCCTGCCCCTGGAGG" \
          "GTGGCCCCACCGGCCGAGACAGCGAGCATATGCAGGAAGCGGCAGGAATAAGGAAAAGCAGCCTCCTGACTTTCCTCG" \
          "CTTGGTGGTTTGAGTGGACCTCCCAGGCCAGTGCCGGGCCCCTCATAGGAGAGGAAGCTCGGGAGGTGGCCAGGCGGC" \
@@ -17,7 +19,7 @@ race =    {"AAAACCTCA": "white", "CGACTACAG": "black", "CGCGGGCCG": "asian"}
 
 suspect = []
 
-print "Telesne znacilnosti osumljenca: "
+print "Telesne znaČilnosti osumljenca: "
 for seq in hrcol:
     if seq in dnaseq:
         suspect.append(hrcol[seq])
@@ -45,19 +47,27 @@ for seq in race:
 
 print "_____________________________________________\n"
 
+result1 = []
 for feature in suspect:
     if feature in Eva:
-        print "Evine znacilnosti, ki se ujemajo: %s" %feature
-print"\n"
+        result1.append(feature)
+        if len(result1) == len(suspect):
+            print "Požeruh je Eva"
+result2 = []
 for feature in suspect:
     if feature in Larisa:
-        print "Larisine znacilnosti, ki se ujemajo: %s" %feature
-print"\n"
+        result2.append(feature)
+        if len(result2) == len(suspect):
+            print "Požeruh je Larisa"
+result3 = []
 for feature in suspect:
     if feature in Matej:
-        print "Matejeve znacilnosti, ki se ujemajo: %s" % feature
-print"\n"
+        result3.append(feature)
+        if len(result3) == len(suspect):
+            print "Požeruh je Matej"
+result4 = []
 for feature in suspect:
     if feature in Miha:
-        print "Mihove znacilnosti, ki se ujemajo: %s" %feature
-
+        result4.append(feature)
+        if len(result4) == len(suspect):
+            print "Požeruh je Miha"
