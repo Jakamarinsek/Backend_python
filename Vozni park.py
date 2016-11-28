@@ -1,20 +1,101 @@
-class Avto(object):
-    def __init__(self, znamka, model, km_num, serv_year):
+class Cars:
+    def __init__(self, znamka, model, st_km, leto_ser):
         self.znamka = znamka
         self.model = model
-        self.km_num = km_num
-        self.serv_year = serv_year
+        self.st_km = st_km
+        self.leto_ser = leto_ser
 
-def full_spec(self):
-    return self.znamka + " " + self.model + " " + self.km_num + " " + serv_year
-
-vozilo_1 = Avto(znamka="bmw", model="320i", km_num="100000", serv_year="2000")
-vozilo_2 = Avto(znamka="zastava", model="yugo", km_num="150000", serv_year="1985")
-vozilo_3 = Avto(znamka="reanult", model="clio", km_num="75000", serv_year="2005")
-vozilo_4 = Avto(znamka="fiat", model="tipo", km_num="123000", serv_year="2011")
-
-vozila = [vozilo_1, vozilo_2, vozilo_3, vozilo_4]
+    def get_full_list(self):
+        return self.znamka + " " + self.model + " " + self.st_km + " " + self.leto_ser
 
 
-for vehicle in vozila:
-    print vehicle.full_spec()
+def list_all_cars(cars):
+    for index, vehicle in enumerate(cars):
+        print "ID: " + str(index)
+        print vehicle.get_full_list()
+
+        print ""
+
+
+def add_new_cars(cars):
+    znamka = raw_input("Vnesite znamko avtomobila: ")
+    model = raw_input("Vnesite model avtomobila: ")
+    st_km = raw_input("Vnesie stanje stevca kilometrov: ")
+    leto_ser = raw_input("Vnesite leto zadnjega servisa: ")
+
+    new = Cars(znamka=znamka, model=model, st_km=st_km, leto_ser=leto_ser)
+    cars.append(new)
+
+    print ""  # empty line
+    print new.get_full_list() + " was successfully added to your car list."
+
+def edit_cars(cars):
+    print "Select the number of the car you'd like to edit: "
+
+    for index, p in enumerate(cars):
+        print str(index) + ") " + add_new_cars()
+
+    print ""  # empty line
+    selected_id = raw_input("What car would you like to edit? (enter ID number): ")
+    selected_car = cars[int(selected_id)]
+
+    new_km_num = raw_input("Please enter new number of km for %s: " % selected_car.get_full_list())
+    selected_car.st_km = new_km_num
+
+    print ""  # empty line
+    print "Number of km updated."
+    # ... you can do the same for other fields.
+
+
+def delete_car(cars):
+    print "Select the number of the car you'd like to delete:"
+
+    for index, vehicle in enumerate(cars):
+        print str(index) + ") " + vehicle.get_full_list()
+
+    print ""  # empty line
+    selected_id = raw_input("What car would you like to delete? (enter ID number): ")
+    selected_car = cars[int(selected_id)]
+
+    cars.remove(selected_car)
+    print ""  # empty line
+    print "Car was successfully removed from your contact list."
+
+
+def main():
+    print "Welcome to your Car List"
+
+    # let's add some contacts in our contact list so it's not empty
+    vozilo_1 = Cars(znamka="bmw", model="320i", st_km="14000", leto_ser="1979")
+    cars = [vozilo_1]
+
+    while True:
+        print ""  # empty line
+        print "Please choose one of these options:"
+        print "a) See all your cars"
+        print "b) Add a new car"
+        print "c) Edit a car"
+        print "d) Delete a car"
+        print "e) Quit the program."
+        print ""  # empty line
+
+        selection = raw_input("Enter your selection (a, b, c, d or e): ")
+        print ""  # empty line
+
+        if selection.lower() == "a":
+            list_all_cars(cars)
+        elif selection.lower() == "b":
+            add_new_cars(cars)
+        elif selection.lower() == "c":
+            edit_cars(cars)
+        elif selection.lower() == "d":
+            delete_car(cars)
+        elif selection.lower() == "e":
+            print "Thank you for using Car List. Goodbye!"
+            break
+        else:
+            print "Sorry, I didn't understand your selection. Please try again."
+            continue
+
+if __name__ == "__main__":
+    main()
