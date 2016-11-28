@@ -91,11 +91,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-with open("Seznam.txt", "w+") as vozilo:
-    print "Seznam vozil --> prenos v zunanjo dadoteko:"
-    vozilo.write("Seznam vozil:\n")
-    for item in vozilo:
-            print "- " + item
-            vozilo.write("- " + item + "\n")
-vozilo.close()
