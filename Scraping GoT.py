@@ -28,6 +28,5 @@ def main():
 
     print "Game of Thrones has seen a total of " + str(total) + " million US viewers on the original air dates of all of its episodes combined."
 
-
 if __name__ == "__main__":
     main()
